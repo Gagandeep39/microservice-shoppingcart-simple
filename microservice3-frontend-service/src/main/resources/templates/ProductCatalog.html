@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"><link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <title>Product Catalog</title>
+</head>
+<body>
+<div>
+    <h2 class="display-2">Product List</h2>
+    <hr>
+    <a style="margin: 20px" class="btn btn-success" th:href="@{/ProductCtrl/checkout}">Go To Cart</a>
+    <table class="table table-striped table-hover table-bordered" style="margin: 20px">
+        <thead>
+        <tr>
+            <td>Product Name</td>
+            <td>Product Category</td>
+            <td>Product Price</td>
+            <td>Quantity</td>
+            <td>Add To Cart</td>
+        </tr>
+        </thead>
+        <tr th:each="tempProduct : ${products}">
+            <td th:text="${tempProduct.getName()}"></td>
+            <td th:text="${tempProduct.getCategory()}"></td>
+            <td th:text="${'₹ ' + tempProduct.getPrice()}"></td>
+            <td >
+                <th:block th:if="${tempProduct.getStock()>0}">
+                    <p th:text="${tempProduct.getStock()}"></p>
+                </th:block>
+
+                <th:block th:if="${tempProduct.getStock()<=0}">
+                    <p th:text="${'Out of Stock'}"></p>
+                </th:block>
+            </td>
+            <td>
+                <th:block th:if="${tempProduct.getStock()>0}">
+                    <form th:action="@{|/ProductCtrl/products/${tempProduct.getId()}|}" method="post">
+                        <button type="submit" class="btn btn-success">Add To Cart</button>
+                    </form>
+                </th:block>
+            </td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>
