@@ -19,7 +19,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -29,13 +30,17 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
+@ApiModel("Cart - Stores Product added by the user")
 public class Cart {
 
     @Id
     @Column(name = "cart_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @ApiModelProperty("Cart ID")
     private Integer cartId;
+
     @ManyToMany
+    @ApiModelProperty("Cart Item List")
     private List<Product> products = new ArrayList<>();
 
     public void addProduct(Product product){

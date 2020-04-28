@@ -18,29 +18,48 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+
 @RestController
+@Api("Manage cart related operation")
 public class CartController {
 
     @Autowired
     private CartService cartService;
 
     @PostMapping("/carts")
+    @ApiOperation(value = "Ceates a new cart")
     public Cart createCart(){
         return cartService.createCart();
     }
 
     @PostMapping("/carts/{cartId}")
-    public Cart addItemToCart(@PathVariable Integer cartId, @RequestBody Product product){
+    @ApiOperation(value = "Addes an item to cart based on ID")
+    public Cart addItemToCart(
+        @ApiParam(value = "Cart ID - ID of cart in which item will be addd")
+        @PathVariable Integer cartId, 
+        @ApiParam(value = "Product - TO be added in cart")
+        @RequestBody Product product){
         return cartService.addItemToCart(cartId, product);
     }
 
     @PostMapping("/carts/{cartId}/{productId}")
-    public Cart removeItemFromCart(@PathVariable Integer cartId, @PathVariable Integer productId){
+    @ApiOperation(value = "Remove an item using cart id and product id")
+    public Cart removeItemFromCart(
+        @ApiParam(value = "ID - ID of cart from which item will be rremoved")
+        @PathVariable Integer cartId,
+        @ApiParam(value = "ID - ID of product to be remoed")
+        @PathVariable Integer productId){
         return cartService.removeItemFromCart(cartId, productId);
     }
 
     @GetMapping("/carts/{cartId}")
-    public Cart fetchById(@PathVariable Integer cartId){
+    @ApiOperation(value = "Fetch a cart by id")
+    public Cart fetchById(
+        @ApiParam(value = "ID through which cart will be fetched ")
+        @PathVariable Integer cartId){
         return cartService.fetchById(cartId);
     }
 
