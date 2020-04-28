@@ -35,5 +35,7 @@ public class Product {
     String name;
     @Column(name = "cat")
     String category;
+    @Column(name = "price")
+    Integer price;
 
 }
