@@ -32,4 +32,4 @@ POST localhost:5002/carts/{cartId}
 POST localhost:5002/carts
 
 ## Delete item from cart
-POST localhost:5002/{cartId}/{productId}
+POST localhost:5002/carts/{cartId}/{productId}
