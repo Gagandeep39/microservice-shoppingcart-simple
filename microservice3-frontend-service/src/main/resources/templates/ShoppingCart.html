@@ -5,12 +5,14 @@
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
     <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/webjars/js-cookie/js.cookie.js"></script>
     <title>Cart</title>
 </head>
 <body>
 <div class="container">
     <h2 class="display-2">Cart Items</h2>
     <a th:href="@{/CartCtrl/checkout}" class="btn btn-success m-1">Check out</a>
+    <a th:href="@{/logout}" class="btn btn-danger">Log out </a>
     <div th:if="${cart.getProducts().size()<=0}">
         <p class="display-4">Add Something to Cart...</p>
     </div>
