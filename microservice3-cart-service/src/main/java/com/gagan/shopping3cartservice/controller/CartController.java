@@ -63,4 +63,10 @@ public class CartController {
         return cartService.fetchById(cartId);
     }
 
+    @PostMapping("/carts/checkout/{cartId}")
+    @ApiOperation(value = "Checkout - Deduct procdutct stocks from product repository")
+    public Cart checkout(@PathVariable Integer cartId){
+        return cartService.checkOut(cartId);
+    }
+
 }

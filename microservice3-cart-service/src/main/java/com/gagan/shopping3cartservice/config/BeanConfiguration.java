@@ -7,10 +7,15 @@
  */
 package com.gagan.shopping3cartservice.config;
 
+import java.util.Arrays;
 import java.util.Collections;
+
+import com.gagan.shopping3cartservice.model.Cart;
+import com.gagan.shopping3cartservice.model.Product;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
 
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Contact;
@@ -50,6 +55,30 @@ public class BeanConfiguration {
                 "API license",
                 "www.gagandeep.com",
                 Collections.emptyList());
+    }
+
+    @Bean
+    public RestTemplate getRestTemplate(){
+        return new RestTemplate();
+    }
+
+    @Bean
+    public Product getProduct(){
+        Product product = new Product();
+        product.setCategory("Product Service is Down");
+        product.setId(0);
+        product.setName("Error in Communication");
+        product.setStock(0);
+        product.setPrice(0);
+        return product;
+    }
+
+    @Bean
+    public Cart getCart(){
+        Cart cart = new Cart();
+        cart.setCartId(0);
+        cart.setProducts(Arrays.asList(getProduct()));;
+        return cart;
     }
 
 }

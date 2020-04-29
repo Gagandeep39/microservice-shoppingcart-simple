@@ -33,3 +33,6 @@ POST localhost:5002/carts
 
 ## Delete item from cart
 POST localhost:5002/carts/{cartId}/{productId}
+
+## Deduct product stocks on checkout 
+POST localhost:5002/carts/checkout/{cartId}
