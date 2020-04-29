@@ -21,11 +21,21 @@
 	</properties>
 
 	<dependencies>
-	
-		<!-- Fixed AOP -->
+		<!-- Use data JPA or Hystrix to fix logger dependency -->
+		<!-- Hystrix Circuit breaker  -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+		</dependency>
+		<!-- ****Required for Hystrix UI/Dashboard -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<!-- Provides a GUI for Hystrix -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>
 		</dependency>
 		<!-- Spport for CSRF token  -->
 		<dependency>
