@@ -40,7 +40,7 @@
                 </td>
                 <td>
                     <th:block th:if="${tempProduct.getStock()>0}">
-                        <form th:action="@{/ProductCtrl/products/${tempProduct.getId()}}" method="post">
+                        <form th:action="@{|/ProductCtrl/products/${tempProduct.getId()}|}" method="post">
                             <button type="submit" class="btn btn-success">Add To Cart</button>
                         </form>
                     </th:block>
